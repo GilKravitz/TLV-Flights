@@ -1,0 +1,109 @@
+openapi: 3.0.0
+info:
+  title: Flight Data API
+  description: API for retrieving flight data statistics.
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /noFlights:
+    get:
+      summary: Get the number of flights
+      parameters:
+        - name: country
+          in: query
+          description: Filter by country
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Number of flights
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  noFlights:
+                    type: integer
+  /noOutboundFlights:
+    get:
+      summary: Get the number of outbound flights
+      parameters:
+        - name: country
+          in: query
+          description: Filter by country
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Number of outbound flights
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  noOutboundFlights:
+                    type: integer
+  /noInboundFlights:
+    get:
+      summary: Get the number of inbound flights
+      parameters:
+        - name: country
+          in: query
+          description: Filter by country
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Number of inbound flights
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  noInboundFlights:
+                    type: integer
+  /noDelayedFlights:
+    get:
+      summary: Get the number of delayed flights
+      responses:
+        "200":
+          description: Number of delayed flights
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  noDelayedFlights:
+                    type: integer
+  /mostPopularDestination:
+    get:
+      summary: Get the most popular destination
+      responses:
+        "200":
+          description: Most popular destination
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  country:
+                    type: string
+  /quickGataway:
+    get:
+      summary: Get (If exists) quick gataway from israel
+      responses:
+        "200":
+          description: Two flights (code and numbe) one from Israel and one to Israel that someone can take for a quick getaway.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  departure:
+                    type: string
+                  arrival:
+                    type: string
