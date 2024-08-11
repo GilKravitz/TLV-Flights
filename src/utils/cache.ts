@@ -1,6 +1,7 @@
 import NodeCache from "node-cache";
 
-const TTL_MINUTES = 15;
+// TTL_MINUTES (15.5 minutes) to avoid "(empty cache) GAP" when the cache is updated every 15.25 minutes
+const TTL_MINUTES = 15.5;
 export const cache = new NodeCache({ stdTTL: TTL_MINUTES });
 
 export const getFromCache = <T>(key: string): T | null => {
